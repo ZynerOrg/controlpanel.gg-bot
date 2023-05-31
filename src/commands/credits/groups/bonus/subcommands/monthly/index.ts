@@ -62,6 +62,8 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
 
   await sendResponse(interaction, { embeds: [embed] });
 
+  const cooldownDuration = 4 * 7 * 24 * 60 * 60; // 1 month in seconds
+  const cooldownName = await generateCooldownName(interaction);
   await cooldownManager.setCooldown(
     await generateCooldownName(interaction),
     guild,
