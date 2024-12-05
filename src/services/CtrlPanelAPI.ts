@@ -42,7 +42,7 @@ class CtrlPanelAPI {
 
     if (!apiCredentials || !apiCredentials.credentials) {
       throw new CtrlPanelAPIError(
-        "API credentials are required for this functionality. Please configure the CtrlPanel.gg API credentials for this guild."
+        "API credentials are required for this functionality. Please configure the CtrlPanel.gg API credentials for this guild.",
       );
     }
 
@@ -70,7 +70,7 @@ class CtrlPanelAPI {
   public async generateVoucher(
     code: string,
     amount: number,
-    uses: number
+    uses: number,
   ): Promise<{ redeemUrl: string }> {
     await this.fetchApiCredentials();
 
@@ -97,7 +97,7 @@ class CtrlPanelAPI {
   public async updateApiCredentials(
     scheme: string,
     domain: string,
-    tokenData: string
+    tokenData: string,
   ): Promise<void> {
     const url = await encryption.encrypt(`${scheme}://${domain}`);
     const token = await encryption.encrypt(tokenData);
