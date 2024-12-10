@@ -1,12 +1,12 @@
 # Dependencies
-FROM node:19-alpine3.17 AS dependencies
+FROM node:20-alpine3.21 AS dependencies
 
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 
 # Build
-FROM node:19-alpine3.17 AS build
+FROM node:20-alpine3.21 AS build
 
 WORKDIR /app
 COPY --from=dependencies /app/node_modules ./node_modules
@@ -15,7 +15,7 @@ COPY . .
 RUN npx prisma generate && npm run build
 
 # Deploy
-FROM node:19-alpine3.17 as deploy
+FROM node:20-alpine3.20 as deploy
 
 WORKDIR /app
 
