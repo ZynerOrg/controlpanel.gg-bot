@@ -1,8 +1,7 @@
-version: "3.7"
 services:
   xyter:
     container_name: xyter
-    image: registry.zyner.org/zyner/xyter/bot
+    image: zyner/xyter
     #build:
     #  context: .
     restart: unless-stopped

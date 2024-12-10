@@ -1,7 +1,7 @@
 import {
-  CommandInteraction,
+  ChatInputCommandInteraction,
   EmbedBuilder,
-  SlashCommandSubcommandBuilder,
+  SlashCommandSubcommandBuilder
 } from "discord.js";
 import deferReply from "../../../../utils/deferReply";
 import sendResponse from "../../../../utils/sendResponse";
@@ -17,7 +17,7 @@ export const builder = (command: SlashCommandSubcommandBuilder) => {
     );
 };
 
-export const execute = async (interaction: CommandInteraction) => {
+export const execute = async (interaction: ChatInputCommandInteraction) => {
   const { options, user } = interaction;
 
   await deferReply(interaction, false);

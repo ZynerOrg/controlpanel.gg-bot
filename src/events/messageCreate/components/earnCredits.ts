@@ -31,10 +31,12 @@ export default async (message: Message) => {
     };
 
     if (message.author.bot) return;
+    if (message.channel.type != ChannelType.GuildText) return;
 
     const checkTime = 5 * 1000; // Milliseconds
     const maxMessageAmount = 3; // Anti Spam Rule, remove 1 credit per message above this value during "checkTime" variable
     const amount = 1; //Amount to give if valid
+
     const penaltyAmount = 2; //Amount to take if invalid
 
     await message.channel
